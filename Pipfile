@@ -11,7 +11,8 @@ flask-sqlalchemy = "*"
 marshmallow-sqlalchemy = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
-flask-migrate = "*"
+flask_migrate = "*"
+flask = "*"
 
 [requires]
 python_version = "3.7"
