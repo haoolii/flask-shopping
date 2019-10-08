@@ -13,6 +13,7 @@ gunicorn = "*"
 psycopg2-binary = "*"
 flask_migrate = "*"
 flask = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
