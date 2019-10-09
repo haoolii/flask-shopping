@@ -10,7 +10,7 @@ from app.blueprints.api import api_blueprint
 
 
 def create_app():
-    app = Flask('shopping')
+    app = Flask('shopping', static_url_path='/static')
     app.config.from_object(app_config[os.getenv('FLASK_ENV')])
     register_extensions(app)
     register_blueprints(app)
@@ -56,10 +56,14 @@ def register_commands(app):
     @app.cli.command()
 
     @click.option('--tag', default=10, help='Quantity of tag, default is 10.')
-    def forge(tag):
-        from app.fakes import fake_tags
+    @click.option('--product', default=10, help='Quantity of product, default is 10.')
+    def forge(tag, product):
+        from app.fakes import fake_tags, fake_products
         db.drop_all()
         db.create_all()
 
         click.echo('Generating %d tags' % tag)
         fake_tags(tag)
+
+        click.echo('Generating %d products' % product)
+        fake_products(product)
