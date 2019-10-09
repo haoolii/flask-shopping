@@ -15,6 +15,19 @@ class Product(db.Model):
     create_at = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, index=True)
 
+    @property
+    def serialize(self):
+       return {
+           'id'          : self.id,
+           'name'        : self.name,
+           'price'       : self.price,
+           'image'       : self.image,
+           'url'         : self.url,
+           'description' : self.description,
+           'product_type': self.product_type,
+           'category_id' : self.category_id
+       }
+
 class ProductSchema(ma.Schema):
     name = ma.Str(required=True)
     price = ma.Int(required=True)

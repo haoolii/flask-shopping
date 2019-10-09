@@ -30,13 +30,11 @@ class test(Resource):
 
 class tag(Resource):
     def get(self, tagid=False):
-        print('?')
         if tagid:
-            return {'type': 'tagid: %s ' % tagid}
-        productSchema = ProductSchema()
+            product = Product.query.get(tagid)
+            if product:
+                return product.serialize
+            else:
+                return 'error', 404
         product_list = Product.query.all()
-
-        res_list = []
-        for i in product_list:
-            res_list.append(productSchema.dump(i))
-        return jsonify(results=res_list)
+        return jsonify(json_list=[i.serialize for i in product_list])
