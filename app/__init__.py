@@ -1,19 +1,18 @@
 import os
 import click
 from flask import Flask, redirect, request, session, url_for, jsonify
-from app.extensions import db
+from app.extensions import db, ma
+from flask_restful import Resource, Api
 from app.config import app_config
 from app.models import Category, Order, Payment, Product, Tag, OrderProduct, ProductTag
-
-from app.blueprints.admin import admin_blueprint
-from app.blueprints.api import api_blueprint
+from app.api.api import test
 
 
 def create_app():
     app = Flask('shopping', static_url_path='/static')
     app.config.from_object(app_config[os.getenv('FLASK_ENV')])
     register_extensions(app)
-    register_blueprints(app)
+    register_api(app)
     register_commands(app)
     register_errors(app)
     return app
@@ -21,12 +20,11 @@ def create_app():
 
 def register_extensions(app):
     db.init_app(app)
+    ma.init_app(app)
 
-
-def register_blueprints(app):
-    app.register_blueprint(admin_blueprint, url_prefix='/admin')
-    app.register_blueprint(api_blueprint, url_prefix='/api')
-
+def register_api(app):
+    api = Api(app)
+    api.add_resource(test, '/api')
 
 def register_errors(app):
     @app.errorhandler(400)

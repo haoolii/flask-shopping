@@ -15,6 +15,7 @@ psycopg2-binary = "*"
 flask_migrate = "*"
 flask = "*"
 python-dotenv = "*"
+flask-restful = "*"
 
 [requires]
 python_version = "3.7"
