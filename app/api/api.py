@@ -26,3 +26,17 @@ class test(Resource):
             return errors
 
         return user
+
+
+class tag(Resource):
+    def get(self, tagid=False):
+        print('?')
+        if tagid:
+            return {'type': 'tagid: %s ' % tagid}
+        productSchema = ProductSchema()
+        product_list = Product.query.all()
+
+        res_list = []
+        for i in product_list:
+            res_list.append(productSchema.dump(i))
+        return jsonify(results=res_list)

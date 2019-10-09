@@ -5,7 +5,7 @@ from app.extensions import db, ma
 from flask_restful import Resource, Api
 from app.config import app_config
 from app.models import Category, Order, Payment, Product, Tag, OrderProduct, ProductTag
-from app.api.api import test
+from app.api.api import test, tag
 
 
 def create_app():
@@ -22,9 +22,12 @@ def register_extensions(app):
     db.init_app(app)
     ma.init_app(app)
 
+
 def register_api(app):
     api = Api(app)
     api.add_resource(test, '/api')
+    api.add_resource(tag, '/api/tag','/api/tag/<string:tagid>')
+
 
 def register_errors(app):
     @app.errorhandler(400)
@@ -51,8 +54,8 @@ def register_commands(app):
             click.echo('Drop tables.')
         db.create_all()
         click.echo('Initialized database.')
-    @app.cli.command()
 
+    @app.cli.command()
     @click.option('--tag', default=10, help='Quantity of tag, default is 10.')
     @click.option('--product', default=10, help='Quantity of product, default is 10.')
     def forge(tag, product):
