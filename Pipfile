@@ -16,6 +16,7 @@ flask_migrate = "*"
 flask = "*"
 python-dotenv = "*"
 flask-restful = "*"
+swagger-ui-py = "*"
 
 [requires]
 python_version = "3.7"

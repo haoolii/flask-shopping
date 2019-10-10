@@ -25,10 +25,10 @@ def register_extensions(app):
 
 def register_api(app):
     api = Api(app)
-    api.add_resource(test, '/api')
-    api.add_resource(tag, '/api/tag','/api/tag/<string:tagid>')
+    api.add_resource(test, '/api/v1')
+    api.add_resource(tag, '/api/v1/tag','/api/v1/tag/<string:tagid>')
 
-
+    
 def register_errors(app):
     @app.errorhandler(400)
     def bad_request(e):
