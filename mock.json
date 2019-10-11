@@ -1,0 +1,97 @@
+{
+    "category_list": [
+        {
+            "name": "3C"
+        },
+        {
+            "name": "運動"
+        },
+        {
+            "name": "生鮮"
+        },
+        {
+            "name": "美妝"
+        }
+    ]
+    ,
+    "payment_list": [
+        {
+            "pay_type" : "現金",
+            "fee": "0"
+        },
+        {
+            "pay_type" : "信用卡",
+            "fee": "10"
+        },
+        {
+            "pay_type" : "貨到付款",
+            "fee": "60"
+        }
+    ],
+    "product_list" : [
+        {
+            "name": "Apple iPhone 8 128G",
+            "price": 19900,
+            "description": "64 位元架構的 A11 Fusion 晶片, 嵌入式 M11 動作感應協同處理器, 1200 萬像素攝錄鏡頭",
+            "image": "https://media.etmall.com.tw/NXimg/002420/2420294/2420294-1_XXL.jpg?t=17607970896",
+            "product_type": "64G, 128G, 256G, 512G",
+            "category": "3C"
+        },
+        {
+            "name": "Apple MacBook Air 13.3吋 筆記型電腦 i5/8G/128G 2019",
+            "price": 36900,
+            "description": "Touch ID, 雙核心第八代 Intel Core i5 處理器, Intel UHD Graphics 617/8G/128G",
+            "image": "https://media.etmall.com.tw/NXimg/002401/2401524/2401524-1_XXL.jpg?t=17580815369",
+            "product_type": "Black, Red, Yellow",
+            "category": "3C"
+        },
+        {
+            "name": "【漢克嚴選】美國產日本和牛級厚切熟成凝脂鮮嫩牛排_5包組(300g±10％/包)",
+            "price": 2680,
+            "description": "日本和牛美國安格斯雙重享受 大理石油花，入口即化，軟嫩香濃 特選嫩肩部位,肉質香滑",
+            "image": "https://media.etmall.com.tw/NXimg/002391/2391889/2391889-1_XXL.jpg?t=17575863457",
+            "product_type": "64G, 128G",
+            "category": "生鮮"
+        },
+        {
+            "name": "吃貨食間 老饕級正宗江蘇太湖大閘蟹(5兩(含繩)±10%/隻)x6隻",
+            "price": 4194,
+            "description": "蟹膏濃肉質鮮甜碩大肥美令人吮指回味品嚐秋蟹正是時候",
+            "image": "https://media.etmall.com.tw/NXimg/002430/2430036/2430036-1_XXL.jpg?t=17607850766",
+            "product_type": "標準配置,高階配置,高大上配置",
+            "category": "生鮮"
+        },
+        {
+            "name": "台鹽生技微分子速亮修護精萃",
+            "price": 2780,
+            "description": "提亮,修飾膚色,延緩肌膚衰老br清透服貼,細滑好推勻br素顏也能透亮好氣色",
+            "image": "https://media.etmall.com.tw/NXimg/002436/2436016/2436016-1_XXL.jpg?t=17605553299",
+            "product_type": "半糖,全糖",
+            "category": "美妝"
+        },
+        {
+            "name": "美島水肌標靶淨斑除黑潔面乳好康福袋組",
+            "price": 1680,
+            "description": "日本原裝進口厚生省認證醫藥部外品標靶淨斑除黑",
+            "image": "https://media.etmall.com.tw/NXimg/002197/2197718/2197718-1_XXL.jpg?t=17315607527",
+            "product_type": "半糖,全糖",
+            "category": "美妝"
+        },
+        {
+            "name": "Wonder Core 2全能塑體健身機(強化升級版) 暗黑 WC-83H",
+            "price": 2980,
+            "description": "重點收緊腰部及兩側、提升臀部、特別針對女性最難瘦的下半身360度旋轉坐墊設計，四段調整~可配合個人身高可摺疊收納，節省空間",
+            "image": "https://media.etmall.com.tw/NXimg/002289/2289602/2289602-1_XXL.jpg?t=17494690866",
+            "product_type": "加辣,不加辣",
+            "category": "運動"
+        },
+        {
+            "name": "IMPAQ英沛克 - 台灣製造商務磁控八段健身車 - MQ-GSU1867",
+            "price": 12000,
+            "description": "移動滾輪設計，搬移更輕鬆。安全塑膠車殼，芙蓉皮透氣坐墊。商務磁控8段，7段可調式坐墊。",
+            "image": "https://media.etmall.com.tw/NXimg/002209/2209110/2209110-1_XXL.jpg?t=17430221022",
+            "product_type": "加辣,不加辣",
+            "category": "運動"
+        }
+    ]
+}

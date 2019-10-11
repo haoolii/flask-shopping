@@ -5,7 +5,6 @@ from app.extensions import db, ma
 from flask_restful import Resource, Api
 from app.config import app_config
 from app.models import Category, Order, Payment, Product, Tag, OrderProduct, ProductTag
-from app.api.api import test, tag
 
 
 def create_app():
@@ -24,11 +23,12 @@ def register_extensions(app):
 
 
 def register_api(app):
+    from app.api.api import product, products
     api = Api(app)
-    api.add_resource(test, '/api/v1')
-    api.add_resource(tag, '/api/v1/tag','/api/v1/tag/<string:tagid>')
+    api.add_resource(products, '/api/v1/product')
+    api.add_resource(product, '/api/v1/product/<string:productid>')
 
-    
+
 def register_errors(app):
     @app.errorhandler(400)
     def bad_request(e):
@@ -56,15 +56,16 @@ def register_commands(app):
         click.echo('Initialized database.')
 
     @app.cli.command()
-    @click.option('--tag', default=10, help='Quantity of tag, default is 10.')
-    @click.option('--product', default=10, help='Quantity of product, default is 10.')
-    def forge(tag, product):
-        from app.fakes import fake_tags, fake_products
+    def mock():
+        from app.mocks import mock_category, mock_payment, mock_products
         db.drop_all()
         db.create_all()
 
-        click.echo('Generating %d tags' % tag)
-        fake_tags(tag)
+        click.echo('Mocking Category')
+        mock_category()
 
-        click.echo('Generating %d products' % product)
-        fake_products(product)
+        click.echo('Mocking Payment')
+        mock_payment()
+
+        click.echo('Mocking product')
+        mock_products()

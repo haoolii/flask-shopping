@@ -1,0 +1,204 @@
+swagger: "2.0"
+info:
+  description: "This is a Flask Shop API."
+  version: "1.0.0"
+  title: "Flask-Shop API"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "unnhao@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "flask-shopping.herokuapp.com"
+basePath: "/api/v1"
+# host: "localhost:5000"
+# basePath: "/api/v1"
+schemes:
+- "https"
+- "http"
+paths:
+  /product:
+    post:
+      tags:
+      - Product
+      summary: "Add new product"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Product to add to store"
+        required: true
+        schema:
+          $ref: "#/definitions/ProductInput"
+      responses:
+        201:
+          description: "Product created"
+          schema:
+            $ref: "#/definitions/Product"
+        400:
+          description: "Invalid input"
+    get:
+      tags:
+      - Product
+      summary: "Get list of products"
+      parameters:
+      - in: "query"
+        name: "category"
+        type: "string"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "List of products"
+          schema:
+            $ref: "#/definitions/ProductList"
+  /product/{id}:
+    get:
+      tags:
+      - Product
+      summary: "Get product info"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "string"
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "product info"
+          schema:
+            $ref: "#/definitions/Product"
+    put:
+      tags:
+      - Product
+      summary: "Update product info"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "string"
+        required: true
+      - in: "body"
+        name: "body"
+        description: "Product to add to store"
+        required: true
+        schema:
+          $ref: "#/definitions/ProductInput"
+      responses:
+        201:
+          description: "updated product info"
+          schema:
+            $ref: "#/definitions/Product"
+    delete:
+      tags:
+      - Product
+      summary: "Delete product"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "product info"
+          schema:
+            $ref: "#/definitions/Product"
+definitions:
+  Category:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+  ProductList:
+    type: "object"
+    properties:
+      products:
+        type: "array"
+        items:
+          $ref: "#/definitions/Product"
+  ProductInput:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        price:
+          type: "integer"
+        url:
+          type: "string"
+        image:
+          type: "string"
+        description:
+          type: "string"
+        product_type:
+          type: "string"
+        category:
+          type: "string"
+  Product:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      price:
+        type: "integer"
+      image:
+        type: "string"
+      url:
+        type: "string"
+      description:
+        type: "string"
+      product_type:
+        type: "string"
+      category:
+        $ref: "#/definitions/Category"
+    xml:
+      name: "Product"
+  Order:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      token:
+        type: "string"
+      amount:
+        type: "integer"
+      email:
+        type: "string"
+      receiver_name:
+        type: "string"
+      receiver_phone:
+        type: "string"
+      receiver_addr1:
+        type: "string"
+      receiver_addr2:
+        type: "string"
+      products:
+        type: "array"
+        items:
+          $ref: "#/definitions/Product"  
+      payment:
+        $ref: "#/definitions/Payment"
+      recode:
+        type: "string"
+  Payment:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+  Tag:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
+# Added by API Auto Mocking Plugin
+# host: virtserver.swaggerhub.com
+# basePath: /unnhao/Flask-api/1.0.0
