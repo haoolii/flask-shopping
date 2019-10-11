@@ -1,13 +1,10 @@
 import random
-from faker import Faker
 from app import db
 from app.models.Tag import Tag
 from app.models.Product import Product
 from app.models.Category import Category
 from app.models.Payment import Payment
 import json
-
-fake = Faker()
 
 def mock_category():
     with open('mock.json') as json_file:
