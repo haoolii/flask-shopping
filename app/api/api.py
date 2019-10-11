@@ -14,7 +14,7 @@ class product(Resource):
             return product.serialize, 200
         except Exception as e:
             return {"reason": repr(e)}, 404
-    def put(self, productid=False):
+    def put(self, productid = False):
         try:
             product = Product.query.get(productid)
             data = request.get_json()
@@ -32,6 +32,14 @@ class product(Resource):
                 return product.serialize
             else:
                 raise Exception('category is not exist')
+        except Exception as e:
+            return {"reason": repr(e)}, 404
+    def delete(self, productid = False):
+        try:
+            product = Product.query.get(productid)
+            db.session.delete(product)
+            db.session.commit()
+            return {'status': 'success'}
         except Exception as e:
             return {"reason": repr(e)}, 404
 
