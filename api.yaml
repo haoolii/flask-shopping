@@ -11,12 +11,82 @@ info:
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 host: "flask-shopping.herokuapp.com"
 basePath: "/api/v1"
-# host: "localhost:5000"
-# basePath: "/api/v1"
 schemes:
 - "https"
 - "http"
 paths:
+  /category:
+    post:
+      tags:
+      - Category
+      summary: "Add a category"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Add a category"
+        required: true
+        schema:
+          $ref: "#/definitions/CategoryInput"
+      responses:
+        200:
+          description: "Add a category success"
+          schema:
+            $ref: "#/definitions/Category"
+    get:
+      tags:
+      - Category
+      summary: "Get all categories"
+      responses:
+        200:
+          description: "List of category"
+          schema:
+            $ref: "#/definitions/CategoryList"
+  /category/{id}:
+    get:
+      tags:
+      - Category
+      summary: "Get category"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Get category success"
+          schema:
+            $ref: "#/definitions/Category"
+    put:
+      tags:
+      - Category
+      summary: "update category"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/CategoryInput"
+      responses:
+        200:
+          description: "update category success"
+          schema:
+            $ref: "#/definitions/Category"
+    delete:
+      tags:
+      - Category
+      summary: "delete category"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+      responses:
+        200:
+          description: "delete category success"
+          schema:
+            $ref: "#/definitions/Category"
   /product:
     post:
       tags:
@@ -110,6 +180,15 @@ definitions:
         type: "integer"
       name:
         type: "string"
+  CategoryList:
+    type: "array"
+    items:
+      $ref: "#/definitions/Category"
+  CategoryInput:
+    type: "object"
+    properties:
+        name:
+          type: "string"
   ProductList:
     type: "object"
     properties:
@@ -132,7 +211,7 @@ definitions:
           type: "string"
         product_type:
           type: "string"
-        category:
+        category_id:
           type: "string"
   Product:
     type: "object"
@@ -183,13 +262,6 @@ definitions:
       recode:
         type: "string"
   Payment:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-      name:
-        type: "string"
-  Tag:
     type: "object"
     properties:
       id:

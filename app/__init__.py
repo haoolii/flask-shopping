@@ -4,8 +4,6 @@ from flask import Flask, redirect, request, session, url_for, jsonify
 from app.extensions import db, ma
 from flask_restful import Resource, Api
 from app.config import app_config
-from app.models import Category, Order, Payment, Product, Tag, OrderProduct, ProductTag
-
 
 def create_app():
     app = Flask('shopping', static_url_path='/static')
@@ -23,8 +21,11 @@ def register_extensions(app):
 
 
 def register_api(app):
-    from app.api.api import product, products
+    from app.resource.product import product, products
+    from app.resource.category import category, categories
     api = Api(app)
+    api.add_resource(categories, '/api/v1/category')
+    api.add_resource(category, '/api/v1/category/<string:categoryid>')
     api.add_resource(products, '/api/v1/product')
     api.add_resource(product, '/api/v1/product/<string:productid>')
 

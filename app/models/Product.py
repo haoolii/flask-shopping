@@ -1,6 +1,7 @@
+from app.models.Category import Category
 from app.extensions import db, ma
 from datetime import datetime
-
+from flask import jsonify
 
 
 class Product(db.Model):
@@ -12,28 +13,42 @@ class Product(db.Model):
     description = db.Column(db.String(1024))
     product_type = db.Column(db.String(256))
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
-    category = db.relationship('Category', backref=db.backref('products', lazy=True))
+    category = db.relationship('Category', backref=db.backref('products', lazy=True, cascade='all, delete-orphan'))
     create_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     @property
-    def serialize(self):
+    def json(self):
         return {
-            'id'          : self.id,
-            'name'        : self.name,
-            'price'       : self.price,
-            'image'       : self.image,
-            'url'         : self.url,
-            'description' : self.description,
+            'name': self.name,
+            'price': self.price,
+            'image': self.image,
+            'url': self.url,
+            'description': self.description,
             'product_type': self.product_type,
-            'category': self.category.serialize
+            'category': self.category.json
         }
 
-class ProductSchema(ma.Schema):
-    name = ma.Str(required=True)
-    price = ma.Int(required=True)
-    image = ma.Str(required=True)
-    url = ma.Str(required=True)
-    description = ma.Str(required=True)
-    product_type = ma.Str(required=True)
-    category = ma.Str(required=True)
+    def add(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        self.create_at = datetime.utcnow()
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def get_product(cls, name):
+        return cls.query.filter_by(name=name).first()
+
+    @classmethod
+    def get_products_by_category(cls, category):
+        return list(i.json for i in cls.query.join(Category).filter_by(name=category).all())
+
+    @classmethod
+    def get_all_products(cls):
+        return list(i.json for i in cls.query.all())
