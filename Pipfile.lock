@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "69f939156b7d5172776c4f74e00daa4d8c1a3ad13ccb57b5b3c73d7c1d40f54f"
+            "sha256": "d66e3776e51ce11e92edd492467e11bd34b256f1224802381011b3ca051f0236"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -43,6 +43,13 @@
             ],
             "index": "pypi",
             "version": "==1.1.1"
+        },
+        "flask-jwt-extended": {
+            "hashes": [
+                "sha256:7e89db96a5d589460853ad4e9cf51ff4ff5848029d65262149375b80ce95d8fe"
+            ],
+            "index": "pypi",
+            "version": "==3.24.0"
         },
         "flask-marshmallow": {
             "hashes": [
@@ -152,6 +159,14 @@
             "index": "pypi",
             "version": "==0.19.0"
         },
+        "passlib": {
+            "hashes": [
+                "sha256:3d948f64138c25633613f303bcc471126eae67c04d5e3f6b7b8ce6242f8653e0",
+                "sha256:43526aea08fa32c6b6dbbbe9963c4c767285b78147b7437597f992812f69d280"
+            ],
+            "index": "pypi",
+            "version": "==1.7.1"
+        },
         "psycopg2-binary": {
             "hashes": [
                 "sha256:080c72714784989474f97be9ab0ddf7b2ad2984527e77f2909fcd04d4df53809",
@@ -185,6 +200,13 @@
             ],
             "index": "pypi",
             "version": "==2.8.3"
+        },
+        "pyjwt": {
+            "hashes": [
+                "sha256:5c6eca3c2940464d106b99ba83b00c6add741c9becaec087fb7ccdefea71350e",
+                "sha256:8d59a976fb773f3e6a39c85636357c4f0e242707394cadadd9814f5cbaa20e96"
+            ],
+            "version": "==1.7.1"
         },
         "python-dateutil": {
             "hashes": [

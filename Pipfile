@@ -17,6 +17,8 @@ flask = "*"
 python-dotenv = "*"
 flask-restful = "*"
 swagger-ui-py = "*"
+passlib = "*"
+flask-jwt-extended = "*"
 
 [requires]
 python_version = "3.7"

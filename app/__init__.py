@@ -1,7 +1,7 @@
 import os
 import click
 from flask import Flask, redirect, request, session, url_for, jsonify
-from app.extensions import db, ma
+from app.extensions import db, ma, jwt
 from flask_restful import Resource, Api
 from app.config import app_config
 
@@ -18,6 +18,7 @@ def create_app():
 def register_extensions(app):
     db.init_app(app)
     ma.init_app(app)
+    jwt.init_app(app)
 
 
 def register_api(app):
@@ -28,6 +29,15 @@ def register_api(app):
     api.add_resource(category, '/api/v1/category/<string:categoryid>')
     api.add_resource(products, '/api/v1/product')
     api.add_resource(product, '/api/v1/product/<string:productid>')
+
+    from app.resource.user import UserRegistration, UserLogin, UserLogoutAccess, UserLogoutRefresh, TokenRefresh, AllUsers, SecretResource
+    api.add_resource(UserRegistration, '/api/v1/registration')
+    api.add_resource(UserLogin, '/api/v1/login')
+    api.add_resource(UserLogoutAccess, '/api/v1/logout/access')
+    api.add_resource(UserLogoutRefresh, '/api/v1/logout/refresh')
+    api.add_resource(TokenRefresh, '/api/v1/token/refresh')
+    api.add_resource(AllUsers, '/api/v1/users')
+    api.add_resource(SecretResource, '/api/v1/secret')
 
 
 def register_errors(app):
