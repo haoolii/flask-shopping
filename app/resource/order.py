@@ -47,6 +47,10 @@ class order(Resource):
             }, 400
     def get(sef):
         token = request.args.get('token')
+        if not token:
+            return {
+                'message': 'give me token'
+            }
         orderId = decode_token(token)['identity']
         order = Order.query.get(orderId)
         return {

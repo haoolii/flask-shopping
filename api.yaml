@@ -20,16 +20,31 @@ securityDefinitions:
     name: Authorization
     in: header
 paths:
-  /order:
+  /orders:
     get:
       tags:
       - Order
-      summary: "get order"
+      summary: "get orders"
       responses:
         200:
           description: "List of orders"
           schema:
             $ref: "#/definitions/OrderList"
+  /order:
+    get:
+      tags:
+      - Order
+      summary: "get order"
+      parameters:
+      - in: "path"
+        name: "token"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "get order"
+          schema:
+            $ref: "#/definitions/OrderOutput"
     post:
       tags:
       - Order
