@@ -32,7 +32,7 @@ class Order(db.Model):
             'receiver_addr1': self.receiver_addr1,
             'receiver_addr2': self.receiver_addr2,
             'payment': self.payment.json,
-            'total': self.product.price * self.amount + self.product.fee
+            'total': self.product.price * self.amount + self.payment.fee
         }
 
     def add(self):
