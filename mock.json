@@ -93,5 +93,34 @@
             "product_type": "加辣,不加辣",
             "category": "運動"
         }
+    ],
+    "order_list": [
+        {
+            "product_id": 5,
+            "amount": 1,
+            "receiver_name": "Grace cheng",
+            "receiver_phone": "0912345678",
+            "receiver_addr1": "台北市松山區*路*號*樓",
+            "receiver_addr2": "台北市內湖區*路*號*樓",
+            "payment_id": 3
+        },
+        {
+            "product_id": 1,
+            "amount": 3,
+            "receiver_name": "Neil Li",
+            "receiver_phone": "0912345678",
+            "receiver_addr1": "台北市中山區*路*號*樓",
+            "receiver_addr2": "台北市信義區*路*號*樓",
+            "payment_id": 1
+        },
+        {
+            "product_id": 2,
+            "amount": 6,
+            "receiver_name": "Leo Wang",
+            "receiver_phone": "0912345678",
+            "receiver_addr1": "台北市文山區*路*號*樓",
+            "receiver_addr2": "台北市中正區*路*號*樓",
+            "payment_id": 2
+        }
     ]
 }

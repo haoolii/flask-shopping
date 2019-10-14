@@ -68,7 +68,7 @@ def register_commands(app):
 
     @app.cli.command()
     def mock():
-        from app.mocks import mock_category, mock_payment, mock_products
+        from app.mocks import mock_category, mock_payment, mock_products, mock_orders
         db.drop_all()
         db.create_all()
 
@@ -80,3 +80,6 @@ def register_commands(app):
 
         click.echo('Mocking product')
         mock_products()
+
+        click.echo('Mocking Order')
+        mock_orders()
