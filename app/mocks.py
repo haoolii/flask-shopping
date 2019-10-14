@@ -7,7 +7,7 @@ from app.models.Payment import Payment
 import json
 
 def mock_category():
-    with open('mock.json') as json_file:
+    with open('mock.json', encoding="utf-8") as json_file:
         data = json.load(json_file)
         for item in data['category_list']:
             category = Category(name = item['name'])
@@ -16,7 +16,7 @@ def mock_category():
         
 
 def mock_payment():
-    with open('mock.json') as json_file:
+    with open('mock.json', encoding="utf-8") as json_file:
         data = json.load(json_file)
         for item in data['payment_list']:
             payment = Payment(
@@ -27,7 +27,7 @@ def mock_payment():
             db.session.commit()
 
 def mock_products(count=10):
-    with open('mock.json') as json_file:
+    with open('mock.json', encoding="utf-8") as json_file:
         data = json.load(json_file)
         for item in data['product_list']:
             category = Category.query.filter_by(name=item['category']).first()
