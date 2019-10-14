@@ -20,6 +20,39 @@ securityDefinitions:
     name: Authorization
     in: header
 paths:
+  /order:
+    get:
+      tags:
+      - Order
+      summary: "get order"
+      responses:
+        200:
+          description: "List of orders"
+          schema:
+            $ref: "#/definitions/OrderList"
+    post:
+      tags:
+      - Order
+      summary: "Add a order"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Add a order"
+        required: true
+        schema:
+          $ref: "#/definitions/OrderInput"
+      responses:
+        200:
+          description: "Add a order success"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+              token:
+                type: "string"
+              order:
+                $ref: "#/definitions/OrderOutput"
   /category:
     post:
       tags:
@@ -178,6 +211,69 @@ paths:
           schema:
             $ref: "#/definitions/Product"
 definitions:
+  Order:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      product_id:
+        type: "integer"
+      amount:
+        type: "integer"
+      receiver_name:
+        type: "string"
+      receiver_phone:
+        type: "string"
+      receiver_addr1:
+        type: "string"
+      receiver_addr2:
+        type: "string"
+      payment_id:
+        type: "integer"
+      recode:
+        type: "string"
+  OrderOutput:
+    type: "object"
+    properties:
+      product_id:
+        type: "integer"
+      amount:
+        type: "integer"
+      receiver_name:
+        type: "string"
+      receiver_phone:
+        type: "string"
+      receiver_addr1:
+        type: "string"
+      receiver_addr2:
+        type: "string"
+      receiver_product_type:
+        type: "string"
+      payment_id:
+        type: "integer"
+      recode:
+        type: "string"
+  OrderInput:
+    type: "object"
+    properties:
+      product_id:
+        type: "integer"
+      amount:
+        type: "integer"
+      receiver_name:
+        type: "string"
+      receiver_phone:
+        type: "string"
+      receiver_addr1:
+        type: "string"
+      receiver_addr2:
+        type: "string"
+      receiver_product_type:
+        type: "string"
+      payment_id:
+        type: "integer"
+      recode:
+        type: "string"
   Category:
     type: "object"
     properties:
@@ -239,6 +335,10 @@ definitions:
         $ref: "#/definitions/Category"
     xml:
       name: "Product"
+  OrderList:
+    type: "array"
+    items:
+      $ref: "#/definitions/Order"
   Order:
     type: "object"
     properties:
@@ -257,6 +357,8 @@ definitions:
       receiver_addr1:
         type: "string"
       receiver_addr2:
+        type: "string"
+      receiver_product_type:
         type: "string"
       products:
         type: "array"

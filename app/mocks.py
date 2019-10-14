@@ -55,6 +55,8 @@ def mock_orders():
                 receiver_phone = item['receiver_phone'],
                 receiver_addr1 = item['receiver_addr1'],
                 receiver_addr2 = item['receiver_addr2'],
+                receiver_product_type = item['receiver_product_type'],
+                recode = item['recode'],
                 payment = payment
             )
             db.session.add(product)

@@ -22,14 +22,23 @@ def register_extensions(app):
 
 
 def register_api(app):
-    from app.resource.product import product, products
-    from app.resource.category import category, categories
     api = Api(app)
+    # category api
+    from app.resource.category import category, categories
     api.add_resource(categories, '/api/v1/category')
     api.add_resource(category, '/api/v1/category/<string:categoryid>')
+
+    # product api
+    from app.resource.product import product, products
     api.add_resource(products, '/api/v1/product')
     api.add_resource(product, '/api/v1/product/<string:productid>')
 
+    # order api
+    from app.resource.order import order, orders
+    api.add_resource(orders, '/api/v1/orders')
+    api.add_resource(order, '/api/v1/order')
+
+    # jwt api
     from app.resource.user import UserRegistration, UserLogin, UserLogoutAccess, UserLogoutRefresh, TokenRefresh, AllUsers, SecretResource
     api.add_resource(UserRegistration, '/api/v1/registration')
     api.add_resource(UserLogin, '/api/v1/login')

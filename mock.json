@@ -102,6 +102,8 @@
             "receiver_phone": "0912345678",
             "receiver_addr1": "台北市松山區*路*號*樓",
             "receiver_addr2": "台北市內湖區*路*號*樓",
+            "receiver_product_type": "半糖",
+            "recode": "456",
             "payment_id": 3
         },
         {
@@ -111,6 +113,8 @@
             "receiver_phone": "0912345678",
             "receiver_addr1": "台北市中山區*路*號*樓",
             "receiver_addr2": "台北市信義區*路*號*樓",
+            "receiver_product_type": "64G",
+            "recode": "123",
             "payment_id": 1
         },
         {
@@ -120,6 +124,8 @@
             "receiver_phone": "0912345678",
             "receiver_addr1": "台北市文山區*路*號*樓",
             "receiver_addr2": "台北市中正區*路*號*樓",
+            "receiver_product_type": "Yellow",
+            "recode": "NULL",
             "payment_id": 2
         }
     ]

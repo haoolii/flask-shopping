@@ -11,3 +11,5 @@ class OrderSchema(ma.Schema):
     receiver_addr1 = ma.Str(required=True)
     receiver_addr2 = ma.Str(required=True)
     payment_id = ma.Int(required=True)
+    receiver_product_type = ma.Str(required=True)
+    recode = ma.Str(required=True)
