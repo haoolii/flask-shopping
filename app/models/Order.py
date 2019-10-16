@@ -25,6 +25,7 @@ class Order(db.Model):
     @property
     def json(self):
         return {
+            'id': self.id,
             'product': self.product.json,
             'amount': self.amount,
             'receiver_name': self.receiver_name,
@@ -32,6 +33,7 @@ class Order(db.Model):
             'receiver_addr1': self.receiver_addr1,
             'receiver_addr2': self.receiver_addr2,
             'payment': self.payment.json,
+            'recode': self.recode,
             'total': self.product.price * self.amount + self.payment.fee
         }
 
