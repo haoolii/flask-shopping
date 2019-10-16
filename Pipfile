@@ -19,6 +19,7 @@ flask-restful = "*"
 swagger-ui-py = "*"
 passlib = "*"
 flask-jwt-extended = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.7"

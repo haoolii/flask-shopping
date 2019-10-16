@@ -20,6 +20,7 @@ class Product(db.Model):
     @property
     def json(self):
         return {
+            'id': self.id,
             'name': self.name,
             'price': self.price,
             'image': self.image,

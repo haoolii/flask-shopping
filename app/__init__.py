@@ -4,9 +4,11 @@ from flask import Flask, redirect, request, session, url_for, jsonify
 from app.extensions import db, ma, jwt
 from flask_restful import Resource, Api
 from app.config import app_config
+from flask_cors import CORS
 
 def create_app():
     app = Flask('shopping', static_url_path='/static')
+    CORS(app)
     app.config.from_object(app_config[os.getenv('FLASK_ENV')])
     register_extensions(app)
     register_api(app)
